@@ -6,7 +6,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className='flex flex-col justify-center bg-white m-72 mx-96'>
+    <div className='bg-slate-500 m-20 mx-96 opacity-60 rounded-lg'>
       
       <Routes>
         <Route path='/' element={<Login />} />

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../App.css'
-
+import "../App.css";
 
 function Login() {
   const [formValues, setFormValues] = useState({
@@ -43,11 +42,11 @@ function Login() {
   };
 
   return (
-    <form className="flex flex-col justify-center text-center align-middle p-20">
-      <h2 className="text-4xl">Log in</h2>
-      <label htmlFor="username">Username</label>
+    <form className="flex flex-col flex-wrap justify-center text-center align-middle p-12 px-28 gap-2 opacity-100">
+      <h2 className="text-4xl pb-6 font-bold drop-shadow-xl text-amber-500">Log in</h2>
+      <label className="font-bold drop-shadow-xl text-amber-400" htmlFor="username">Username</label>
       <input
-        className="rounded-lg"
+        className="rounded-lg opacity-70 rounded-full border-2 border-violet-900"
         type="text"
         name="username"
         id="username"
@@ -55,8 +54,9 @@ function Login() {
         onChange={handleInput}
       />
       <br />
-      <label htmlFor="password">Password</label>
+      <label className="font-bold drop-shadow-xl text-amber-400" htmlFor="password">Password</label>
       <input
+        className="rounded-lg opacity-70 rounded-full border-2 border-violet-900"
         type="password"
         name="password"
         id="password"
@@ -64,7 +64,25 @@ function Login() {
         onChange={handleInput}
       />{" "}
       <br />
-      <button onSubmit={handleSubmit}>Submit</button>
+      <label className="text-amber-600 font-bold drop-shadow-xl text-amber-400" htmlFor="email">E-mail</label>
+      <input
+        className="rounded-lg opacity-70 rounded-full border-2 border-violet-900"
+        type="email"
+        name="email"
+        id="email"
+        value={formValues.email}
+        onChange={handleInput}
+      />{" "}
+      <br />
+      <div className="flex justify-center">
+        <button
+          className="flex rounded-lg bg-cyan-500 p-1 px-4 font-bold drop-shadow-xl text-rose-700"
+          onSubmit={handleSubmit}
+          disabled={loading}
+        >
+          Log in
+        </button>
+      </div>
     </form>
   );
 }
