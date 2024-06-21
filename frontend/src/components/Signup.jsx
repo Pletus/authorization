@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 
 import "../App.css";
 
-function Login() {
+function Signup() {
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
@@ -12,6 +12,7 @@ function Login() {
   });
 
   const { BASE_URL, setUser } = useContext(AuthContext);
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function Login() {
     setError(null);
     setLoading(true);
     try {
-      const response = await fetch(`${BASE_URL}/users/login`, {
+      const response = await fetch(`${BASE_URL}/users/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formValues),
@@ -38,7 +39,8 @@ function Login() {
       navigate("/posts");
       console.log(data);
     } catch (error) {
-      setError(error.message);
+      console.log(error);
+      setError(error);
     } finally {
       setLoading(false);
     }
@@ -50,7 +52,7 @@ function Login() {
       className="flex flex-col flex-wrap justify-center text-center align-middle p-12 px-28 gap-2 opacity-100"
     >
       <h2 className="text-4xl pb-6 font-bold drop-shadow-xl text-amber-500">
-        Log in
+        Sign up
       </h2>
       <label
         className="font-bold drop-shadow-xl text-amber-400"
@@ -103,11 +105,11 @@ function Login() {
           type="submit"
           disabled={loading}
         >
-          Log in
+          Sign up
         </button>
       </div>
     </form>
   );
 }
 
-export default Login;
+export default Signup;

@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
 });
 
-userSchema.statics.signup = async function (username, password) {
+userSchema.statics.signup = async function (username, password, email) {
   const usernameExists = await this.findOne({ username });
 
   if (usernameExists) throw Error("Username already in use");
@@ -15,7 +15,7 @@ userSchema.statics.signup = async function (username, password) {
   const salt = await bcrypt.genSalt(10);
   const hashedPW = await bcrypt.hash(password, salt);
 
-  const user = await this.create({ username, password: hashedPW });
+  const user = await this.create({ username, password: hashedPW, email });
 
   return user;
 };
